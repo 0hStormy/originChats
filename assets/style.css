@@ -1,0 +1,252 @@
+:root {
+    --view: #141618;
+    --main: #202326;
+    --sidebar: #292c30;
+    --pri: #292c30;
+    --alt: #1d1f22;
+    --text: #fcfcfc;
+    --outline: #505155;
+    --accent: #78b3a9;
+    --accent-full: #86ddcf;
+    --accent-active: #49504f;
+
+    --error: #da4453;
+    --error-bg: #da445350;
+
+    --sidebar-width: 192px;
+}
+
+body {
+    margin: 0;
+    background: var(--main);
+    color: var(--text);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    user-select: none;
+    font-size: 10pt;
+    font-weight: normal;
+}
+
+p {
+    font-size: 11pt;
+}
+
+.titlebar {
+    z-index: 1001;
+}
+
+#sidebar {
+    width: var(--sidebar-width);
+    height: calc(100vh - 48px);
+    background: var(--view);
+    display: flex;
+    flex-direction: column;
+    outline: 1px solid var(--outline);
+    position: absolute;
+    left: 0;
+    top: 48px;
+}
+
+#sidebar a {
+    margin: 4px;
+    margin-inline: 8px;
+    color: var(--text);
+    text-decoration: none;
+    cursor: default;
+}
+
+#sidebar hr {
+    width: calc(var(--sidebar-width) - 12px);
+    margin: 2px;
+    margin-inline: 4px;
+    border: none;
+    height: 1px;
+    background: var(--outline);
+}
+
+#menubar {
+    background: var(--sidebar);
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 48px;
+    width: 100vw;
+    outline: 1px solid var(--outline);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 8;
+}
+
+#menubar img {
+    border-radius: 50%;
+    margin: 8px;
+    width: 32px;
+    transition: cubic-bezier(0.19, 1, 0.22, 1) 0.1s;
+    -webkit-app-region: no-drag;
+}
+
+#menubar img:hover {
+    outline: solid 1px var(--accent);
+    border-radius: 8px;
+}
+
+#menubar input {
+    opacity: 0.6;
+}
+
+#menubar input:hover {
+    border: solid 1px var(--outline);
+}
+
+#menubar input:focus{
+    opacity: 1;
+    border: solid 1px var(--accent);
+}
+
+#authPrompt {
+    background: var(--main);
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+input {
+    all: unset;
+    background: var(--view);
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    border: solid 1px var(--outline);
+    border-radius: 4px;
+    padding: 6px;
+    margin: 4px;
+    transition: border cubic-bezier(0.19, 1, 0.22, 1) 0.1s;
+}
+
+input:hover {
+    border: solid 1px var(--accent);
+}
+
+input:focus {
+    border: solid 1px var(--accent);
+}
+
+::-moz-selection { /* Code for Firefox */
+  color: var(--main);
+  background: var(--accent-full);
+}
+
+::selection {
+  color: var(--main);
+  background: var(--accent-full);
+}
+
+button {
+    all: unset;
+    background: var(--pri);
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    border: solid 1px var(--outline);
+    border-radius: 4px;
+    padding: 6px 20px;
+    margin: 4px;
+    transition: cubic-bezier(0.19, 1, 0.22, 1) 0.1s;
+}
+
+button:hover {
+    border: solid 1px var(--accent);
+}
+
+button:active {
+    border: solid 1px var(--accent);
+    background: var(--accent-active);
+}
+
+#errorBox {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    display: none;
+    background: var(--error-bg);
+    outline: solid 1px var(--error);
+    transition: cubic-bezier(0.19, 1, 0.22, 1) 0.1s;
+}
+
+#errorBox p {
+    margin: 12px;
+    font-size: 10pt;
+}
+
+#errorBox i {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 16px;
+    margin: 8px;
+    border-radius: 4px;
+    padding: 4px;
+    transition: cubic-bezier(0.19, 1, 0.22, 1) 0.1s;
+}
+
+#errorBox i:hover {
+    outline: solid 1px var(--accent);
+}
+
+#errorBox i:active {
+    outline: solid 1px var(--accent);
+    background: var(--accent-active);
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 0;
+    margin-left: var(--sidebar-width);
+    width: calc(100vw - var(--sidebar-width));
+    height: calc(100vh - 80px);
+    overflow-y: scroll;
+    scrollbar-color: var(--outline) var(--main);
+    margin-bottom: 32px;
+}
+
+#main #message {
+    margin: 4px;
+    margin-inline: 8px;
+    display: flex;
+    z-index: 2;
+}
+
+#message img {
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    margin-inline-end: 4px;
+}
+
+#message span {
+    margin-inline: 4px;
+}
+
+.vert {
+    display: flex;
+    flex-direction: column;
+}
+
+#chatInput {
+    position: fixed;
+    bottom: 0;
+    margin: 0;
+    margin-left: var(--sidebar-width);
+    width: calc(100vw - var(--sidebar-width) - 14px);
+    overflow-y: scroll;
+    scrollbar-color: var(--outline) var(--main);
+    border-radius: 0;
+}

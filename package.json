@@ -1,0 +1,15 @@
+{
+  "type": "module",
+  "name": "originchats",
+  "version": "1.0.0",
+  "description": "originChats Electron client",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "0Stormy",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "electron": "^37.2.0"
+  }
+}
