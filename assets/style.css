@@ -27,10 +27,14 @@
         --outline: #aaacb3;
         --accent: #78b3a9;
         --accent-full: #86ddcf;
-        --accent-active: #49504f;
+        --accent-active: #d2e6e3;
 
         --error: #da4453;
         --error-bg: #da445350;
+    }
+
+    .roturLogo {
+        filter: invert();
     }
 }
 
@@ -64,7 +68,14 @@ p {
     top: 48px;
 }
 
+a {
+    color: var(--accent);
+    text-decoration: none;
+    margin: 8px;
+}
+
 #sidebar a {
+    all: unset;
     margin: 4px;
     margin-inline: 8px;
     color: var(--text);

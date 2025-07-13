@@ -1,4 +1,9 @@
-currentServer = "wss://chats.mistium.com"
+if (localStorage.getItem("currentServer")) {
+    currentServer = localStorage.getItem("currentServer");
+} else {
+    localStorage.setItem("currentServer", "wss://chats.mistium.com");
+    currentServer = localStorage.getItem("currentServer");
+}
 
 let state = {
     _currentChannel: "general",
@@ -163,11 +168,13 @@ function listMessages(messageList) {
 
     for (let message of messageList) {
         const wrapper = document.createElement("div");
+    const timestamp = message["timestamp"];
+    const date = new Date(timestamp * 1000);
         wrapper.innerHTML = `
 <div id="message">
     <img src="https://avatars.rotur.dev/${message["user"]}" alt="">
     <div class="vert">
-        <span>${message["user"]}</span>
+        <span>${message["user"]} - ${date.toLocaleString()}</span>
         <span>${message["content"]}</span>
     </div>
 </div>
@@ -183,11 +190,13 @@ function addMessage(messagePacket) {
     if (state.currentChannel == messagePacket["channel"]) {
         message = messagePacket["message"]
         const wrapper = document.createElement("div");
+        const timestamp = message["timestamp"];
+        const date = new Date(timestamp * 1000);
         wrapper.innerHTML = `
 <div id="message">
     <img src="https://avatars.rotur.dev/${message["user"]}" alt="">
     <div class="vert">
-        <span>${message["user"]}</span>
+        <span>${message["user"]} - ${date.toLocaleString()}</span>
         <span>${message["content"]}</span>
     </div>
 </div>
@@ -231,3 +240,11 @@ if (document.getElementById('min-button')) {
         window.api.sendWindowControl('minimize');
     });
 }
+
+const input = document.getElementById("serverInput")
+input.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        localStorage.setItem("currentServer", input.value);
+        location.reload();
+    }
+});

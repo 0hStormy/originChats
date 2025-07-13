@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html spellcheck="false" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>originChats</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="titlebar/titlebar.css">
+    <link rel="stylesheet" href="https://cdn.kde.org/breeze-icons/icons.css"/>
+</head>
+<body>
+    <div class="titlebar">
+        <div class="decorations">
+            <img id="min-button" src="titlebar/min.svg" alt="">
+            <img id="max-button" src="titlebar/max.svg" alt="">
+            <img id="close-button" src="titlebar/close.svg" alt="">
+        </div>
+    </div>
+    <style>
+        body {
+            margin: 16px;
+        }
+
+        p {
+            font-size: 10pt;
+        }
+    </style>
+    <p>There are a few reasons you could've landed up here:</p>
+    <ul>
+        <li>You typed in a server address incorrectly</li>
+        <li>You found a bug</li>
+        <li>You're a developer doing developing stuffs</li>
+        <li>You just need/want to reset your settings</li>
+    </ul>
+    <button onclick="localStorage.removeItem('currentServer'); location.replace('index.html')">Reset Chosen Server</button>
+    <button onclick="localStorage.clear(); location.replace('index.html');">Reset Everything</button>
+    <button onclick="location.replace('index.html')">Cancel</button>
+</body>
+</html>
