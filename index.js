@@ -11,13 +11,14 @@ let isWinMaximized = false
 
 const createWindow = () => {
   const win = new BrowserWindow({
-    titleBarStyle: 'hidden',
+    titleBarStyle: 'visible',
     width: 720,
     height: 720,
     minWidth: 640,
     minHeight: 480,
     icon: 'static/icons/icon512.png',
     transparent: true,
+    autoHideMenuBar: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,

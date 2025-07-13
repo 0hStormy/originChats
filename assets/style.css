@@ -16,6 +16,24 @@
     --sidebar-width: 192px;
 }
 
+@media (prefers-color-scheme: light) {
+    :root {
+        --view: #ffffff;
+        --main: #eff0f1;
+        --sidebar: #dddfe1;
+        --pri: #fcfcfc;
+        --alt: #f7f7f7;
+        --text: #232629;
+        --outline: #aaacb3;
+        --accent: #78b3a9;
+        --accent-full: #86ddcf;
+        --accent-active: #49504f;
+
+        --error: #da4453;
+        --error-bg: #da445350;
+    }
+}
+
 body {
     margin: 0;
     background: var(--main);
