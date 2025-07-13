@@ -116,9 +116,20 @@ function auth() {
                     break;
 
                 case 'handshake':
-                    if (data.val === -1) {
-                        reject(new Error('Authentication failed - invalid validator token'));
+                    const rawdata = event.data;
+                    let jsonData;
+                    if (typeof rawdata === "string") {
+                        try {
+                            jsonData = JSON.parse(rawdata);
+                        } catch (e) {
+                            console.error("Failed to parse JSON:", e);
+                            return;
+                        }
+                    } else {
+                        jsonData = rawdata;
                     }
+
+                    document.getElementById("currentServerIcon")?.setAttribute("src", jsonData?.val?.server?.icon || "");
                     break;
 
                 case 'error':
@@ -242,6 +253,7 @@ if (document.getElementById('min-button')) {
 }
 
 const input = document.getElementById("serverInput")
+input.setAttribute("value", localStorage.getItem("currentServer"))
 input.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
         localStorage.setItem("currentServer", input.value);
