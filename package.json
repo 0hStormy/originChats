@@ -5,11 +5,52 @@
   "description": "originChats Electron client",
   "main": "index.js",
   "scripts": {
-    "start": "electron ."
+    "build": "electron-builder --publish never",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux"
+  },
+  "build": {
+    "appId": "me.zerostormy.originChats",
+    "productName": "originChats",
+    "files": [
+      "**/*"
+    ],
+    "directories": {
+      "buildResources": "build"
+    },
+    "mac": {
+      "target": [
+        "zip"
+      ],
+      "category": "public.app-category.internet"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "category": "Internet"
+    }
   },
   "author": "0Stormy",
   "license": "Apache-2.0",
-  "dependencies": {
-    "electron": "^37.2.0"
+  "devDependencies": {
+    "electron": "^37.2.1",
+    "electron-builder": "^26.0.12"
   }
 }

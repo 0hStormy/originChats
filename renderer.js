@@ -81,7 +81,7 @@ function auth() {
 
                     const input = document.getElementById("chatInput")
                     input.addEventListener("keydown", (event) => {
-                        if (event.key === "Enter") {
+                        if (event.key === "Enter" && !event.shiftKey) {
                             ws.send(JSON.stringify({ 
                                 cmd: 'message_new',
                                 content: input.value,
@@ -186,7 +186,7 @@ function listMessages(messageList) {
     <img src="https://avatars.rotur.dev/${message["user"]}" alt="">
     <div class="vert">
         <span>${message["user"]} - ${date.toLocaleString()}</span>
-        <span>${message["content"]}</span>
+        <span>${marked.parse(message["content"])}</span>
     </div>
 </div>
         `.trim();
@@ -208,7 +208,7 @@ function addMessage(messagePacket) {
     <img src="https://avatars.rotur.dev/${message["user"]}" alt="">
     <div class="vert">
         <span>${message["user"]} - ${date.toLocaleString()}</span>
-        <span>${message["content"]}</span>
+        <span>${marked.parse(message["content"])}</span>
     </div>
 </div>
         `.trim();

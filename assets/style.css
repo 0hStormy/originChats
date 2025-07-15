@@ -49,7 +49,7 @@ body {
 }
 
 p {
-    font-size: 11pt;
+    font-size: 10pt;
 }
 
 .titlebar {
@@ -162,6 +162,27 @@ input:hover {
 }
 
 input:focus {
+    border: solid 1px var(--accent);
+}
+
+textarea {
+    all: unset;
+    background: var(--view);
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    border: solid 1px var(--outline);
+    border-radius: 4px;
+    padding: 6px;
+    margin: 4px;
+    transition: border cubic-bezier(0.19, 1, 0.22, 1) 0.1s;
+}
+
+textarea:hover {
+    border: solid 1px var(--accent);
+}
+
+textarea:focus {
     border: solid 1px var(--accent);
 }
 
