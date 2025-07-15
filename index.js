@@ -17,14 +17,14 @@ const createWindow = () => {
     minWidth: 640,
     minHeight: 480,
     icon: 'static/icons/icon512.png',
-    transparent: true,
     autoHideMenuBar: true,
+    transparent: false,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
       nodeIntegration: false,
-    }
-  })
+  }
+})
 
   win.loadFile('index.html')
 }
