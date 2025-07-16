@@ -264,7 +264,7 @@ button:active {
     height: calc(100vh - 80px);
     overflow-y: scroll;
     scrollbar-color: var(--outline) var(--main);
-    margin-bottom: 32px;
+    margin-bottom: 48px;
 }
 
 #main #message {
@@ -272,6 +272,10 @@ button:active {
     margin-inline: 8px;
     display: flex;
     z-index: 2;
+}
+
+#main #message p {
+    margin: 0;
 }
 
 #message img {
