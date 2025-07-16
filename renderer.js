@@ -173,26 +173,38 @@ function listChannels(channelList) {
     }
 }
 
+function stripHtml(html) {
+    const div = document.createElement("div");
+    div.innerHTML = html;
+    return div.textContent || div.innerText || "";
+}
+
+
 function listMessages(messageList) {
     const chatArea = document.getElementById("main");
     chatArea.innerHTML = '';
 
     for (let message of messageList) {
         const wrapper = document.createElement("div");
-    const timestamp = message["timestamp"];
-    const date = new Date(timestamp * 1000);
+        const timestamp = message["timestamp"];
+        const date = new Date(timestamp * 1000);
+
+        const plainText = stripHtml(message["content"]);
+        const mdText = marked.parse(plainText);
+
         wrapper.innerHTML = `
 <div id="message">
     <img src="https://avatars.rotur.dev/${message["user"]}" alt="">
     <div class="vert">
         <span>${message["user"]} - ${date.toLocaleString()}</span>
-        <span>${marked.parse(message["content"])}</span>
+        <span>${mdText}</span>
     </div>
 </div>
         `.trim();
 
         chatArea.appendChild(wrapper.firstElementChild);
     }
+
     chatArea.scrollTop = chatArea.scrollHeight;
 }
 
@@ -203,12 +215,16 @@ function addMessage(messagePacket) {
         const wrapper = document.createElement("div");
         const timestamp = message["timestamp"];
         const date = new Date(timestamp * 1000);
+
+        const plainText = stripHtml(message["content"]);
+        const mdText = marked.parse(plainText);
+
         wrapper.innerHTML = `
 <div id="message">
     <img src="https://avatars.rotur.dev/${message["user"]}" alt="">
     <div class="vert">
         <span>${message["user"]} - ${date.toLocaleString()}</span>
-        <span>${marked.parse(message["content"])}</span>
+        <span>${mdText}</span>
     </div>
 </div>
         `.trim();
