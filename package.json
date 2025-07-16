@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "originchats",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "originChats Electron client",
   "main": "index.js",
   "scripts": {
