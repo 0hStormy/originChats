@@ -1,3 +1,5 @@
+## Moved to http://git.0stormy.me/Stormy/originChats
+
 Awesome chat client
 
 ![demo image](demo.png)
